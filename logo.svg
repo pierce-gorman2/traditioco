@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 530" width="500" height="530"
+     role="img" aria-label="Vocatio Ventures Logo">
+  <defs>
+
+    <!-- ── Blue / silver metallic gradient for the left V ────────────
+         Mimics a lit metallic surface: dark edge → bright highlight → dark edge
+         Using a horizontal gradient across the width of the left V shape     -->
+    <linearGradient id="blueGrad" x1="65" y1="0" x2="268" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#1e3560"/>
+      <stop offset="28%"  stop-color="#6890c0"/>
+      <stop offset="55%"  stop-color="#c8e0f8"/>
+      <stop offset="78%"  stop-color="#e8f4ff"/>
+      <stop offset="100%" stop-color="#3a5888"/>
+    </linearGradient>
+
+    <!-- ── Gold metallic gradient for the right V ────────────────────
+         Dark gold on outer edges, bright warm gold toward the inner face   -->
+    <linearGradient id="goldGrad" x1="232" y1="0" x2="435" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#5a3a06"/>
+      <stop offset="25%"  stop-color="#c9a227"/>
+      <stop offset="52%"  stop-color="#f0d050"/>
+      <stop offset="78%"  stop-color="#e8c040"/>
+      <stop offset="100%" stop-color="#7a5010"/>
+    </linearGradient>
+
+    <!-- ── Gold gradient for the cross ──────────────────────────────
+         Light at the top (where the eye is drawn) → richer at base       -->
+    <linearGradient id="crossGold" x1="250" y1="28" x2="250" y2="168" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#f5e060"/>
+      <stop offset="55%"  stop-color="#d4a820"/>
+      <stop offset="100%" stop-color="#a07810"/>
+    </linearGradient>
+
+    <!-- ── Soft blue inner glow on the left V ───────────────────────  -->
+    <filter id="blueGlow" x="-12%" y="-8%" width="124%" height="116%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0 0 1 0 0
+                0 0 1 0 0
+                0 0 1 0 0
+                0 0 0 0.18 0" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- ── Gold glow on the right V and cross ──────────────────────  -->
+    <filter id="goldGlow" x="-12%" y="-8%" width="124%" height="116%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="1 0 0 0 0
+                0 0.8 0 0 0
+                0 0 0 0 0
+                0 0 0 0.22 0" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- ── Ambient radial glow overlay on the card ──────────────────  -->
+    <radialGradient id="cardGlow" cx="50%" cy="28%" r="48%">
+      <stop offset="0%"   stop-color="#c9a227" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#c9a227" stop-opacity="0"/>
+    </radialGradient>
+
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════
+       CARD BACKGROUND
+  ═══════════════════════════════════════════════ -->
+  <rect width="500" height="530" rx="20" fill="#0b0e14"/>
+  <rect width="500" height="530" rx="20" fill="url(#cardGlow)"/>
+  <!-- Hair-line gold border -->
+  <rect x="1" y="1" width="498" height="528" rx="19"
+        fill="none" stroke="#c9a227" stroke-width="0.7" stroke-opacity="0.18"/>
+
+  <!-- ═══════════════════════════════════════════════
+       CROSS
+       Vertical bar : x 240–260, y 28–168
+       Horizontal bar: x 208–292, y 72–95
+       The bottom of the vertical bar (y=168) descends to the
+       top edge of both V shapes (y=165) and into the gap
+       between their inner top edges (x 240–260).
+  ═══════════════════════════════════════════════ -->
+  <path d="
+    M 240,28
+    L 260,28
+    L 260,72
+    L 292,72
+    L 292,95
+    L 260,95
+    L 260,168
+    L 240,168
+    L 240,95
+    L 208,95
+    L 208,72
+    L 240,72
+    Z"
+    fill="url(#crossGold)"
+    filter="url(#goldGlow)"/>
+
+  <!-- ═══════════════════════════════════════════════
+       LEFT V  — blue / silver metallic
+       Polygon points (outer → tip → outer-right,
+                       then inner-right → inner-tip → inner-left)
+
+       Outer contour  :  (65,165) → (212,415) → (268,165)
+       Inner contour  :  (240,165) → (212,372) → (105,165)
+       The right side of the inner contour (240,165) sits exactly
+       where the cross's vertical bar ends — they share the edge.
+  ═══════════════════════════════════════════════ -->
+  <path d="
+    M 65,165
+    L 212,415
+    L 268,165
+    L 240,165
+    L 212,372
+    L 105,165
+    Z"
+    fill="url(#blueGrad)"
+    filter="url(#blueGlow)"/>
+
+  <!-- ═══════════════════════════════════════════════
+       RIGHT V — gold metallic
+       Sits slightly to the right, overlapping the left V
+       in the center (x 232–268) so the gold appears in front.
+
+       Outer contour  :  (232,165) → (288,415) → (435,165)
+       Inner contour  :  (395,165) → (288,372) → (260,165)
+  ═══════════════════════════════════════════════ -->
+  <path d="
+    M 232,165
+    L 288,415
+    L 435,165
+    L 395,165
+    L 288,372
+    L 260,165
+    Z"
+    fill="url(#goldGrad)"
+    filter="url(#goldGlow)"/>
+
+  <!-- ═══════════════════════════════════════════════
+       SEPARATOR
+  ═══════════════════════════════════════════════ -->
+  <line x1="90" y1="448" x2="410" y2="448"
+        stroke="#c9a227" stroke-width="0.75" stroke-opacity="0.28"/>
+
+  <!-- ═══════════════════════════════════════════════
+       WORDMARK
+  ═══════════════════════════════════════════════ -->
+  <text x="250" y="492"
+        font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif"
+        font-size="50" font-weight="700"
+        fill="#eef2f7" text-anchor="middle" letter-spacing="-1">VOCATIO</text>
+
+  <text x="250" y="520"
+        font-family="'Inter', Arial, Helvetica, sans-serif"
+        font-size="12" font-weight="600"
+        fill="#8da0b8" text-anchor="middle" letter-spacing="9">VENTURES</text>
+
+</svg>
